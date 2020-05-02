@@ -11,12 +11,22 @@ nav {
   flex-direction: row;
 }
 
+label{
+    font-weight: 500;
+}
+
+.form-inline{
+    flex-wrap: nowrap;
+    padding-bottom:10px;
+}
+
 .sidebar-container {
   display: flex;
   background-color: rgb(235, 235, 235);
   flex-direction: column;
   width: 500px;
   height: 100vh;
+  padding:10px;
 }
 
 .media {
