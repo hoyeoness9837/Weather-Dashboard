@@ -43,7 +43,8 @@ label{
 .row {
   display: flex;
   flex-direction: row;
-  justify-content: baseline;
+  justify-content: center;
+  align-items: 
 }
 .col-sm-2 {
   flex-wrap: wrap;
