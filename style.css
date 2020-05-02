@@ -13,12 +13,21 @@ nav {
 
 .sidebar-container {
   display: flex;
+  background-color: rgb(235, 235, 235);
   flex-direction: column;
+  width: 500px;
+  height: 100vh;
+}
+
+.media {
+  padding: 30px;
 }
 
 .main-container {
   display: flex;
   flex-direction: column;
+  padding: 30px;
+  justify-content: space-around;
 }
 
 .row {
