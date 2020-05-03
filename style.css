@@ -11,26 +11,32 @@ nav {
   flex-direction: row;
 }
 
-label{
-    font-weight: 500;
+label {
+  font-weight: 500;
 }
 
-.form-inline{
-    flex-wrap: nowrap;
-    padding-bottom:10px;
+.form-inline {
+  flex-wrap: nowrap;
+  padding-bottom: 10px;
 }
 
 .sidebar-container {
   display: flex;
   background-color: rgb(235, 235, 235);
   flex-direction: column;
-  width: 500px;
+  width: fit-content;
   height: 100vh;
-  padding:10px;
+  padding: 10px;
 }
 
 .media {
   padding: 30px;
+  justify-content: center;
+}
+
+#currentMedia {
+  border: 2px solid grey;
+  border-radius: 20px;
 }
 
 .main-container {
@@ -44,8 +50,8 @@ label{
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: 
 }
+
 .col-sm-2 {
   flex-wrap: wrap;
 }

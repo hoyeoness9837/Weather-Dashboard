@@ -16,86 +16,28 @@
     <nav>Weather Dashboard</nav>
     <div class="containerwraper">
       <div class="sidebar-container">
-          <label for="form-control mr-sm-2">Search for a City:</label>
-        <form class="form-inline my-2 my-lg-0" >
+        <label for="form-control mr-sm-2">Search for a City:</label>
+        <form class="form-inline my-2 my-lg-0">
           <input
+            id="input"
             class="form-control mr-sm-2"
             type="search"
             placeholder="Search"
             aria-label="Search"
           />
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <button
+            id="searchBtn"
+            class="btn btn-outline-success my-2 my-sm-0"
+            type="submit"
+          >
             Search
           </button>
         </form>
-        <ul class="list-group">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Morbi leo risus</li>
-          <li class="list-group-item">Porta ac consectetur ac</li>
-          <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
+        <ul class="list-group" id="searchedHistory"></ul>
       </div>
       <div class="main-container">
-        <div class="media">
-            <div class="media-body">
-              <h5 class="mt-0 mb-4">Media object</h5>
-              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-            </div>
-            <img src="..." class="ml-3" alt="...">
-          </div>
-          <div class="row">
-            <div class="col-sm-2">
-              <div class="card text-white bg-primary mb-3" style="max-width: 12rem;">
-                <div class="card-header">mm/dd/yyyy</div>
-                <div class="card-body">
-                  <h5 class="card-title">img of weather
-                  <p class="card-text">
-              temp,humiditiy.</p>
-              </div>
-                  </div>
-              </div>
-              <div class="col-sm-2">
-              <div class="card text-white bg-primary mb-3" style="max-width: 12rem;">
-                <div class="card-header">mm/dd/yyyy</div>
-                <div class="card-body">
-                  <h5 class="card-title">img of weather
-                  <p class="card-text">
-              temp,humiditiy.</p>
-              </div>
-                  </div>
-              </div>
-              <div class="col-sm-2">
-              <div class="card text-white bg-primary mb-3" style="max-width: 12rem;">
-                <div class="card-header">mm/dd/yyyy</div>
-                <div class="card-body">
-                  <h5 class="card-title">img of weather
-                  <p class="card-text">
-              temp,humiditiy.</p>
-              </div>
-                  </div>
-              </div>
-              <div class="col-sm-2">
-              <div class="card text-white bg-primary mb-3" style="max-width: 12rem;">
-                <div class="card-header">mm/dd/yyyy</div>
-                <div class="card-body">
-                  <h5 class="card-title">img of weather
-                  <p class="card-text">
-              temp,humiditiy.</p>
-              </div>
-                  </div>
-              </div>
-              <div class="col-sm-2">
-              <div class="card text-white bg-primary mb-3" style="max-width: 12rem;">
-                <div class="card-header">mm/dd/yyyy</div>
-                <div class="card-body">
-                  <h5 class="card-title">img of weather
-                  <p class="card-text">
-              temp,humiditiy.</p>
-              </div>
-                  </div>
-              </div>
-          </div>
+        <div class="media" id="js-currentMedia"></div>
+        <div class="row" id="forecast"></div>
       </div>
     </div>
   </body>
