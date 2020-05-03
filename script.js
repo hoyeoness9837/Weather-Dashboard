@@ -1,6 +1,32 @@
 let currentSearch = null;
 let searchedHistoryList = [];
 
+function renderForecastMedia(mediaIndex) {
+  return `<div class="media" id="currentMedia">
+  <div class="media-body">
+  <h4 class="mt-0 mb-1">${currentSearch.city.name}</h4>
+  <p class="card-text">Temperature: ${currentSearch.list[mediaIndex].main.temp} F</p>
+  <p class="card-text"> Humidity: ${currentSearch.list[mediaIndex].main.humidity}%</p>
+  <p class="card-text"> Wind speed: ${currentSearch.list[mediaIndex].wind.speed}</p>
+  <p class="uv-text"></p>
+  </div>
+  <img src="http://openweathermap.org/img/wn/${currentSearch.list[mediaIndex].weather[0].icon}@2x.png" class="ml-3">
+  </div>`;
+}
+
+function renderForecastCard(cardIndex) {
+  return `<div class="col-sm-2">
+  <div class="card text-white bg-primary mb-3" style="max-width: 12rem;">
+  <div class="card-header">${currentSearch.list[cardIndex].dt_txt}</div>
+  <div class="card-body">
+  <h5 class="card-title"><img src='http://openweathermap.org/img/wn/${currentSearch.list[cardIndex].weather[0].icon}@2x.png'></h5>
+  <p class="card-text">Temperature: ${currentSearch.list[cardIndex].main.temp} F</p>
+  <p class="card-text"> Humidity: ${currentSearch.list[cardIndex].main.humidity}%</p>
+  </div>
+  </div>
+  </div>`;
+}
+
 function renderHistory() {
   document.getElementById(
     'searchedHistory'
@@ -20,31 +46,6 @@ function renderCurrent() {
     renderForecastCard(32);
 }
 
-function renderForecastMedia(mediaIndex) {
-  return `<div class="media" id="currentMedia">
-<div class="media-body">
-<h5 class="mt-0 mb-1">${currentSearch.city.name}</h5>
-<p class="card-text">Temperature: ${currentSearch.list[mediaIndex].main.temp} F</p>
-<p class="card-text"> Humidity: ${currentSearch.list[mediaIndex].main.humidity}%</p>
-<p class="card-text"> Wind speed: ${currentSearch.list[mediaIndex].wind.speed}</p>
-</div>
-<img src="http://openweathermap.org/img/wn/${currentSearch.list[mediaIndex].weather[0].icon}@2x.png" class="ml-3">
-</div>`;
-}
-
-function renderForecastCard(cardIndex) {
-  return `<div class="col-sm-2">
-<div class="card text-white bg-primary mb-3" style="max-width: 12rem;">
-<div class="card-header">${currentSearch.list[cardIndex].dt_txt}</div>
-<div class="card-body">
-<h5 class="card-title"><img src='http://openweathermap.org/img/wn/${currentSearch.list[cardIndex].weather[0].icon}@2x.png'></h5>
-<p class="card-text">Temperature: ${currentSearch.list[cardIndex].main.temp} F</p>
-<p class="card-text"> Humidity: ${currentSearch.list[cardIndex].main.humidity}%</p>
-</div>
-</div>
-</div>`;
-}
-
 // when the btn is inside of the form tag you can use .onsubmit instead of addEventListener.submit
 document.getElementById('searchBtn').addEventListener('click', (event) => {
   event.preventDefault();
@@ -58,6 +59,38 @@ document.getElementById('searchBtn').addEventListener('click', (event) => {
       searchedHistoryList.push(info);
       renderHistory();
       renderCurrent();
+      askForCoords();
       console.log(info);
+      document.getElementById('input').value = '';
     });
 });
+
+//////////UV index//////////////
+function askForCoords() {
+  navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoError);
+}
+
+function handleGeoError() {
+  console.log('Cannot access the location');
+}
+
+function handleGeoSuccess(position) {
+  const lat = position.coords.latitude;
+  const lon = position.coords.longitude;
+  getWeather(lat, lon);
+}
+
+let currentData = null;
+
+function getWeather(lat, lon) {
+  fetch(
+    `http://api.openweathermap.org/data/2.5/uvi?appid=90b2f773fae3862aaf2f11a1fe2f96b7&lat=${lat}&lon=${lon}`
+  )
+    .then(function (response) {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      document.querySelector('.uv-text').innerHTML = `UV: ${data.value}`;
+    });
+}
