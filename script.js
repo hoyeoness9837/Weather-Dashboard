@@ -65,7 +65,7 @@ document.getElementById('searchBtn').addEventListener('click', (event) => {
     });
 });
 
-//////////Fetching UV index//////////////
+//-----------------------------------------Fetching UV index-----------------------------//
 function askForCoords() {
   navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoError);
 }
@@ -92,6 +92,6 @@ function getWeather(lat, lon) {
     .then((data) => {
       console.log(data);
       currentData = data;
-      document.querySelector('.uv-text').innerHTML = `UV: ${data.value}`;
+      document.querySelector('.uv-text').innerHTML = `UV Index: ${data.value}`;
     });
 }
