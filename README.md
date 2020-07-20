@@ -17,7 +17,7 @@ use VS code and open index.html file in Chrome browser.
 
 ## Github Repo
 
-- [https://github.com/hoyeoness9837/Code-Quiz](https://github.com/hoyeoness9837/Code-Quiz)
+- [https://github.com/hoyeoness9837/Weather-Dashboard/](https://github.com/hoyeoness9837/Weather-Dashboard/)
 
 ## Deployed URL
 
